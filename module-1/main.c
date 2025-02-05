@@ -1,14 +1,34 @@
 #include <stdio.h>
 
+// Displays the calculator menu
+void displayMenu() {
+  printf("----------Menu----------\n");
+  printf("1. Addition\n");
+  printf("2. Subtraction\n");
+  printf("3. Multiplication\n");
+  printf("4. Division\n\n");
+}
+
+// Prompts user to continue or exit the program
+char promptContinue() {
+  char ch;
+  printf("\nDo you want to continue (y/n)? ");
+  scanf(" %c", &ch);
+  return ch;
+}
+
+// Print newline for formatting if continuing
+void printNewline(char ch) {
+  if (ch == 'y' || ch == 'Y') {
+    printf("\n");
+  }
+}
+
 int main() {
   char ch;
 
   do {
-    printf("----------Menu----------\n");
-    printf("1. Addition\n");
-    printf("2. Subtraction\n");
-    printf("3. Multiplication\n");
-    printf("4. Division\n\n");
+    displayMenu();
 
     int choice;
     printf("Enter your choice: ");
@@ -17,12 +37,10 @@ int main() {
     if (choice > 4 || choice < 1) {
       printf("\nInvalid choice!!!\n");
 
-      printf("\nDo you want to continue (y/n)? ");
-      scanf(" %c", &ch);
+      ch = promptContinue();
 
-      if (ch == 'y' || ch == 'Y') {
-        printf("\n");
-      }
+      printNewline(ch);
+
     } else {
 
       int num1;
@@ -48,12 +66,9 @@ int main() {
         break;
       }
 
-      printf("\nDo you want to continue (y/n)? ");
-      scanf(" %c", &ch);
+      ch = promptContinue();
 
-      if (ch == 'y' || ch == 'Y') {
-        printf("\n");
-      }
+      printNewline(ch);
     }
   } while (ch == 'y' || ch == 'Y');
 
